@@ -1,0 +1,83 @@
+/* ============================================================
+   اطلس جغرافیایی تاریخ بیهقی — هویت بصری
+   کرم کاغذی / زرشکی / سرمه‌ای + طلایی کدِر فقط برای تذهیب
+   نقش پس‌زمینه: هندسه آجرکاری غزنوی — ستاره هشت‌پر و لوزی
+   ============================================================ */
+:root{
+  --cream:#F7F0DF; --cream-2:#FDFAF1; --burgundy:#701E2A; --burgundy-dark:#571623;
+  --navy:#1C2B4A; --navy-soft:#2E4066; --gold:#B08D3C; --ink:#23202A; --muted:#6B6252;
+}
+*{font-family:Vazirmatn,Tahoma,sans-serif;box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);min-height:100vh}
+/* نقش هشت‌پر محو روی زمینه کرم */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.05;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23701E2A' stroke-width='1.4'%3E%3Cpath d='M48 8 L58 38 L88 48 L58 58 L48 88 L38 58 L8 48 L38 38 Z'/%3E%3Crect x='30' y='30' width='36' height='36' transform='rotate(45 48 48)'/%3E%3C/g%3E%3C/svg%3E");
+}
+a{color:var(--burgundy);text-decoration:none}
+.wrap{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:28px 18px 56px}
+
+/* قاب دولایه نسخه‌های خطی: خط سرمه‌ای بیرون، خط زرشکی داخل */
+.frame{background:var(--cream-2);border:1.5px solid var(--navy);outline:1px solid var(--burgundy);outline-offset:5px;border-radius:6px;padding:28px 26px;box-shadow:0 10px 30px rgba(28,43,74,.08)}
+.frame-thin{outline-offset:3px}
+
+/* سربرگ و شمسه */
+.topbar{position:relative;z-index:2;display:flex;align-items:center;gap:14px;justify-content:space-between;padding:14px 18px;background:var(--navy);color:var(--cream)}
+.brand{display:flex;align-items:center;gap:12px}
+.shamseh{width:44px;height:44px;flex:0 0 auto}
+.brand .brand-title{font-size:15px;font-weight:700;color:var(--cream)}
+.brand .brand-sub{font-size:11px;color:#CBBF9F}
+nav.main{display:flex;gap:8px;flex-wrap:wrap}
+nav.main a{color:var(--cream);font-size:13px;padding:7px 13px;border:1px solid rgba(247,240,223,.35);border-radius:20px}
+nav.main a:hover,nav.main a.active{background:var(--burgundy);border-color:var(--burgundy)}
+
+/* عنوان نستعلیق با خط تذهیب طلایی */
+h1.title{font-family:"Noto Nastaliq Urdu",serif;font-weight:700;color:var(--burgundy);font-size:34px;line-height:2.1;margin:6px 0 2px;text-align:center}
+.tezhib{display:flex;align-items:center;gap:10px;margin:10px auto 18px;max-width:420px}
+.tezhib::before,.tezhib::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.tezhib .dot{width:9px;height:9px;background:var(--gold);transform:rotate(45deg)}
+.subtitle{text-align:center;color:var(--navy-soft);font-size:14px;margin:0 0 14px}
+.lead{font-size:14.5px;line-height:2.1;text-align:justify}
+.btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px 0 4px}
+.btn{display:inline-block;padding:9px 20px;border-radius:24px;font-size:14px;border:1.5px solid var(--burgundy)}
+.btn-primary{background:var(--burgundy);color:#fff}
+.btn-primary:hover{background:var(--burgundy-dark)}
+.btn-ghost{color:var(--burgundy);background:transparent}
+.credit{margin-top:26px;padding-top:14px;border-top:1px solid #E3D7B8;font-size:12.5px;color:var(--muted);text-align:center;line-height:2}
+
+/* کارت‌های پرونده شهر — شبیه کارت‌های کتابخانه: تخت، خلوت، هر کارت یک موضوع */
+.cards{display:grid;gap:18px}
+.card{background:var(--cream-2);border:1.5px solid var(--navy);outline:1px solid var(--burgundy);outline-offset:3px;border-radius:6px;padding:20px 22px}
+.card h2{margin:0 0 12px;font-size:17px;color:var(--burgundy);display:flex;align-items:center;gap:9px}
+.card h2::before{content:"";width:10px;height:10px;background:var(--burgundy);transform:rotate(45deg);flex:0 0 auto}
+table.info{width:100%;border-collapse:collapse;font-size:14px}
+table.info td{padding:7px 4px;border-bottom:1px solid #E7DcBE;vertical-align:top;line-height:1.9}
+table.info td:first-child{color:var(--muted);width:34%}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--navy);color:var(--cream);border-radius:20px;padding:5px 13px;font-size:13px}
+.chip b{color:#E9C979;font-weight:600}
+/* خط زمانی: نوار عمودی، نقطه‌های لوزی زرشکی */
+.timeline{list-style:none;margin:0;padding:0 6px 0 0}
+.timeline li{position:relative;padding:0 26px 16px 0;border-right:2px solid #D9C99A;margin-right:5px}
+.timeline li::before{content:"";position:absolute;right:-8px;top:4px;width:12px;height:12px;background:var(--burgundy);transform:rotate(45deg);border:2px solid var(--cream-2)}
+.timeline .when{font-weight:700;color:var(--navy);font-size:14px}
+.timeline .what{font-size:14px;line-height:1.9}
+p.body{font-size:14.5px;line-height:2.1;text-align:justify;margin:0}
+.src-note{font-size:12px;color:var(--muted)}
+ol.sources{font-size:14.5px;line-height:2.2;padding-right:22px}
+ol.sources li{margin-bottom:10px}
+
+/* صفحه نقشه */
+#map{position:fixed;inset:0;z-index:1}
+.map-head{position:fixed;top:0;right:0;left:0;z-index:1000}
+.map-intro{position:fixed;top:76px;right:14px;z-index:1000;max-width:330px;background:var(--cream-2);border:1.5px solid var(--navy);outline:1px solid var(--burgundy);outline-offset:3px;border-radius:6px;padding:14px 16px;box-shadow:0 8px 24px rgba(28,43,74,.18)}
+.map-intro h1{font-family:"Noto Nastaliq Urdu",serif;color:var(--burgundy);font-size:21px;line-height:1.9;margin:0 0 6px}
+.map-intro p{font-size:12.5px;line-height:1.95;color:var(--ink);margin:0 0 8px}
+/* نشان لوزی کاشی روی نقشه */
+.tile-marker{width:22px;height:22px;background:var(--burgundy);transform:rotate(45deg);border:3px solid var(--cream);box-shadow:0 2px 8px rgba(0,0,0,.4);cursor:pointer}
+.tile-marker:hover{background:var(--navy)}
+.map-panel{position:fixed;top:0;left:0;bottom:0;width:min(360px,92vw);z-index:1100;background:var(--cream-2);border-right:1.5px solid var(--navy);padding:20px;overflow-y:auto;transform:translateX(-106%);transition:transform .35s ease;box-shadow:6px 0 24px rgba(0,0,0,.2)}
+.map-panel.open{transform:translateX(0)}
+.map-panel h2{font-family:"Noto Nastaliq Urdu",serif;color:var(--burgundy);font-size:24px;margin:4px 0 10px}
+.btn-close{background:none;border:1px solid #C9B98A;border-radius:8px;padding:4px 11px;cursor:pointer;font-size:13px;font-family:inherit}
+@media (max-width:640px){.map-intro{max-width:calc(100vw - 28px)}h1.title{font-size:27px}.frame{padding:20px 16px}}
