@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<title>اطلس جغرافیایی تاریخ بیهقی — نقشه</title></head><body>
+<header class="topbar map-head"><div class="brand"><svg class="shamseh" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#B08D3C" stroke-width="2"><path d="M50 4 L60 40 L96 50 L60 60 L50 96 L40 60 L4 50 L40 40 Z"/><rect x="32" y="32" width="36" height="36" transform="rotate(45 50 50)"/></g><circle cx="50" cy="50" r="6" fill="#701E2A"/></svg><div><div class="brand-title">اطلس جغرافیایی تاریخ بیهقی</div><div class="brand-sub">Beyhaqi Geographical Atlas</div></div></div>
+<nav class="main"><a href="index.html">نقشه</a><a href="ghazna.html">پرونده غزنه</a><a href="about.html">درباره پژوهش</a><a href="sources.html">منابع</a></nav></header>
+<div id="map"></div>
+<section class="map-intro">
+  <h1>اطلس جغرافیایی تاریخ بیهقی</h1>
+  <p>مکان‌های نام‌برده‌شده در تاریخ بیهقی، بر پایه نقشه مرجع سیدی–یاحقی</p>
+  <p>تاریخ بیهقی، نوشته ابوالفضل بیهقی (قرن پنجم هجری)، روایت دربار غزنوی است. این اطلس مکان‌های این کتاب را روی نقشه نشان می‌دهد؛ با کلیک روی هر مکان، پرونده کوتاه آن باز می‌شود.</p>
+  <button id="open-ghazna" class="btn btn-primary" type="button">مشاهده غزنه</button>
+</section>
+<aside id="map-panel" class="map-panel" aria-label="پرونده کوتاه غزنه">
+  <button id="close-panel" class="btn-close" type="button">✕ بستن</button>
+  <h2>غزنه / غزنین</h2>
+  <table class="info">
+    <tr><td>نام امروزی</td><td>غزنی، افغانستان</td></tr>
+    <tr><td>مختصات</td><td>۳۳٫۵۶۶۷ شمالی، ۶۸٫۴۵۰۰ شرقی</td></tr>
+    <tr><td>نقش</td><td>پایتخت غزنویان از ۹۷۷ میلادی</td></tr>
+  </table>
+  <p class="src-note">منبع: Encyclopaedia Iranica، مدخل ḠAZNĪ</p>
+  <div class="btns"><a class="btn btn-primary" href="ghazna.html">پرونده کامل غزنه</a></div>
+</aside>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/data.js"></script>
+<script src="js/map.js"></script>
+</body></html>
