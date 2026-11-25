@@ -3,24 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<title>منابع — اطلس جغرافیایی تاریخ بیهقی</title></head><body>
-<header class="topbar"><div class="brand"><svg class="shamseh" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#B08D3C" stroke-width="2"><path d="M50 4 L60 40 L96 50 L60 60 L50 96 L40 60 L4 50 L40 40 Z"/><rect x="32" y="32" width="36" height="36" transform="rotate(45 50 50)"/></g><circle cx="50" cy="50" r="6" fill="#701E2A"/></svg><div><div class="brand-title">اطلس جغرافیایی تاریخ بیهقی</div><div class="brand-sub">Beyhaqi Geographical Atlas</div></div></div>
-<nav class="main"><a href="index.html">نقشه</a><a href="ghazna.html">پرونده غزنه</a><a href="about.html">درباره پژوهش</a><a href="sources.html">منابع</a></nav></header>
+<title>منابع — اطلس جغرافیایی تاریخ بیهقی</title>
+</head>
+<body>
+<header class="topbar ">
+  <a class="brand" href="index.html">
+    <svg class="shamseh" viewBox="0 0 100 100" aria-hidden="true">
+      <g fill="none" stroke="#B08D3C" stroke-width="2">
+        <path d="M50 4 L60 40 L96 50 L60 60 L50 96 L40 60 L4 50 L40 40 Z"/>
+        <rect x="32" y="32" width="36" height="36" transform="rotate(45 50 50)"/>
+      </g>
+      <circle cx="50" cy="50" r="6" fill="#701E2A"/>
+    </svg>
+    <div>
+      <div class="brand-title">اطلس جغرافیایی تاریخ بیهقی</div>
+      <div class="brand-sub">Beyhaqi Geographical Atlas</div>
+    </div>
+  </a>
+  <nav class="main" aria-label="ناوبری اصلی">
+    <a href="index.html">نقشه</a>
+    <a href="ghazna.html">پرونده غزنه</a>
+    <a href="about.html">درباره پژوهش</a>
+    <a href="sources.html" class="active">منابع</a>
+  </nav>
+</header>
+
 <main class="wrap">
   <div class="frame">
-    <h1 class="title">منابع</h1>
+    <h1 class="title">منابع پایه</h1>
     <div class="tezhib"><span class="dot"></span></div>
+    <p class="lead">تمامی اطلاعات تاریخی، جغرافیایی و لایه‌های نقشه در این نسخه منحصراً بر پایه منابع مرجع زیر تنظیم شده‌اند:</p>
+
     <ol class="sources">
-      <li>Encyclopaedia Iranica، مدخل ḠAZNĪ — مختصات، جایگاه و تاریخ غزنه</li>
-      <li>نقشه «نام جاهای تاریخ بیهقی»، ضمیمه تاریخ بیهقی، تصحیح مهدی سیدی و دکتر محمدجعفر یاحقی؛ GIS: محمدامیر ابراهیمی؛ تهیه‌کننده و ناظر علمی: مهدی سیدی — نقشه مرجع جانمایی</li>
-      <li>تاریخ بیهقی، تصحیح علی‌اکبر فیاض — متن مبنای ارجاع‌های آینده</li>
-      <li>OpenStreetMap — لایه نقشه امروزی</li>
+      <li><strong>Encyclopaedia Iranica، مدخل ḠAZNĪ</strong> — منبع پایه برای مختصات، ارتفاع، فاصله از کابل، جایگاه سیاسی غزنه و خط زمانی کلان دوره غزنوی و دوره‌های متأخر.</li>
+      <li><strong>تاریخ بیهقی، تصحیح علی‌اکبر فیاض</strong> — متن مبنای پژوهش برای استخراج و ارجاع شواهد مستقیم متنی (بخش کدگذاری نقل‌قول‌ها و شماره صفحات در دست انجام است).</li>
+      <li><strong>نقشه «نام جاهای تاریخ بیهقی»</strong>، پیوست نسخه تصحیح‌شده به کوشش مهدی سیدی و محمدجعفر یاحقی؛ اطلاعات GIS: محمد امیر ابراهیمی؛ تهیه و نظارت علمی: مهدی سیدی — نقشه مرجع تاریخی برای جانمایی مکانی.</li>
+      <li><strong>OpenStreetMap</strong> — لایه نقشه جغرافیایی معاصر برای تطبیق موقعیت تاریخی با جغرافیای امروزی.</li>
     </ol>
+
+    <div class="note-box note-info">
+      <strong>توضیح درباره ژئورفرنس نقشه مرجع:</strong> انطباق تصویر نقشه «نام جاهای تاریخ بیهقی» با مختصات جغرافیایی در این نسخه به‌صورت تقریبی (بر مبنای کادر ۴۰ تا ۷۶ درجه شرقی و ۲۶ تا ۴۲ درجه شمالی) انجام شده است و در مراحل بعدی پژوهش با ژئورفرنس دقیق GIS جایگزین خواهد شد.
+    </div>
+
+    <p class="credit">سازنده و پژوهشگر: فائزه فاضل — ناظر علمی: دکتر سلمان ساکت</p>
   </div>
 </main>
-<script> (function(){var els=document.querySelectorAll(".reveal");if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("visible")});return}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("visible");io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)});})(); </script> 
-</body></html>
+</body>
+</html>

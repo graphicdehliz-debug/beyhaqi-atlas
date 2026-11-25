@@ -1,155 +1,419 @@
 /* ============================================================
-   اطلس جغرافیایی تاریخ بیهقی — هویت بصری
-   کرم کاغذی / زرشکی / سرمه‌ای + طلایی کدِر فقط برای تذهیب
+   اطلس جغرافیایی تاریخ بیهقی — هویت بصری (نسخه پژوهشی ۵)
+   کرم کاغذی / زرشکی / سرمه‌ای + طلایی کدِر برای تذهیب
    نقش پس‌زمینه: هندسه آجرکاری غزنوی — ستاره هشت‌پر و لوزی
    ============================================================ */
 :root{
-  --cream:#F7F0DF; --cream-2:#FDFAF1; --burgundy:#701E2A; --burgundy-dark:#571623;
-  --navy:#1C2B4A; --navy-soft:#2E4066; --gold:#B08D3C; --ink:#23202A; --muted:#6B6252;
+  --cream:#F7F0DF;
+  --cream-2:#FDFAF1;
+  --cream-3:#EFE6D2;
+  --burgundy:#701E2A;
+  --burgundy-dark:#571623;
+  --burgundy-soft:#F6E5E7;
+  --navy:#1C2B4A;
+  --navy-soft:#2E4066;
+  --navy-tint:#E6ECF4;
+  --gold:#B08D3C;
+  --gold-soft:#F5EDD8;
+  --ink:#23202A;
+  --muted:#6B6252;
+  --line:#DFD2B4;
+  --ok:#24593B;
+  --ok-bg:#E4F0E7;
+  --warn:#7F2D24;
+  --warn-bg:#F8E6E2;
+  --later:#5C5245;
+  --later-bg:#ECE6DA;
 }
+
 *{font-family:Vazirmatn,Tahoma,sans-serif;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 html,body{margin:0;padding:0}
-body{background:var(--cream);color:var(--ink);min-height:100vh}
+body{background:var(--cream);color:var(--ink);min-height:100vh;line-height:1.9}
+
 /* نقش هشت‌پر محو روی زمینه کرم */
-body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.05;z-index:0;
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.05;z-index:0;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23701E2A' stroke-width='1.3'%3E%3Cpath d='M60 16 L72 48 L104 60 L72 72 L60 104 L48 72 L16 60 L48 48 Z'/%3E%3Crect x='41' y='41' width='38' height='38' transform='rotate(45 60 60)'/%3E%3Ccircle cx='60' cy='60' r='7'/%3E%3Crect x='-11' y='-11' width='22' height='22' transform='rotate(45 0 0)'/%3E%3Crect x='109' y='-11' width='22' height='22' transform='rotate(45 120 0)'/%3E%3Crect x='-11' y='109' width='22' height='22' transform='rotate(45 0 120)'/%3E%3Crect x='109' y='109' width='22' height='22' transform='rotate(45 120 120)'/%3E%3C/g%3E%3C/svg%3E");
 }
+
 a{color:var(--burgundy);text-decoration:none}
-.wrap{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:28px 18px 56px}
+a:hover{text-decoration:underline}
+.wrap{position:relative;z-index:1;max-width:940px;margin:0 auto;padding:28px 18px 60px}
 
 /* قاب دولایه نسخه‌های خطی: خط سرمه‌ای بیرون، خط زرشکی داخل */
-.frame{background:var(--cream-2);border:1.5px solid var(--navy);outline:1px solid var(--burgundy);outline-offset:5px;border-radius:6px;padding:28px 26px;box-shadow:0 10px 30px rgba(28,43,74,.08)}
+.frame{
+  background:var(--cream-2);
+  border:1.5px solid var(--navy);
+  outline:1px solid var(--burgundy);
+  outline-offset:5px;
+  border-radius:6px;
+  padding:28px 26px;
+  box-shadow:0 10px 30px rgba(28,43,74,.08);
+}
 .frame-thin{outline-offset:3px}
 
 /* سربرگ و شمسه */
-.topbar{position:relative;z-index:2;display:flex;align-items:center;gap:14px;justify-content:space-between;padding:14px 18px;background:var(--navy);color:var(--cream)}
-.brand{display:flex;align-items:center;gap:12px}
-.shamseh{width:44px;height:44px;flex:0 0 auto}
-.brand .brand-title{font-size:15px;font-weight:700;color:var(--cream)}
-.brand .brand-sub{font-size:11px;color:#CBBF9F}
+.topbar{
+  position:relative;z-index:20;
+  display:flex;align-items:center;gap:14px;justify-content:space-between;flex-wrap:wrap;
+  padding:12px 18px;
+  background:var(--navy);color:var(--cream);
+  border-bottom:2px solid var(--gold);
+}
+.brand{display:flex;align-items:center;gap:12px;color:var(--cream);text-decoration:none}
+.brand:hover{text-decoration:none}
+.shamseh{width:42px;height:42px;flex:0 0 auto}
+.brand .brand-title{font-size:15px;font-weight:700;color:var(--cream);line-height:1.4}
+.brand .brand-sub{font-size:11px;color:#CBBF9F;line-height:1.3}
 nav.main{display:flex;gap:8px;flex-wrap:wrap}
-nav.main a{color:var(--cream);font-size:13px;padding:7px 13px;border:1px solid rgba(247,240,223,.35);border-radius:20px}
-nav.main a:hover,nav.main a.active{background:var(--burgundy);border-color:var(--burgundy)}
+nav.main a{
+  color:var(--cream);font-size:13px;padding:6px 14px;
+  border:1px solid rgba(247,240,223,.35);border-radius:20px;
+  transition:background .2s,border-color .2s;text-decoration:none;
+}
+nav.main a:hover,nav.main a.active{background:var(--burgundy);border-color:var(--burgundy);text-decoration:none}
 
 /* عنوان نستعلیق با خط تذهیب طلایی */
-h1.title{font-family:"Noto Nastaliq Urdu",serif;font-weight:700;color:var(--burgundy);font-size:34px;line-height:2.1;margin:6px 0 2px;text-align:center}
+h1.title{
+  font-family:"Noto Nastaliq Urdu",serif;font-weight:700;
+  color:var(--burgundy);font-size:34px;line-height:2.1;
+  margin:6px 0 2px;text-align:center;
+}
 .tezhib{display:flex;align-items:center;gap:10px;margin:10px auto 18px;max-width:420px}
 .tezhib::before,.tezhib::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 .tezhib .dot{width:9px;height:9px;background:var(--gold);transform:rotate(45deg)}
-.subtitle{text-align:center;color:var(--navy-soft);font-size:14px;margin:0 0 14px}
-.lead{font-size:14.5px;line-height:2.1;text-align:justify}
-.btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px 0 4px}
-.btn{display:inline-block;padding:9px 20px;border-radius:24px;font-size:14px;border:1.5px solid var(--burgundy)}
+.subtitle{text-align:center;color:var(--navy-soft);font-size:14.5px;margin:0 0 18px}
+.lead{font-size:14.5px;line-height:2.1;text-align:justify;margin:0 0 14px}
+
+.btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0 4px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:8px 19px;border-radius:24px;font-size:13.5px;font-weight:600;
+  border:1.5px solid var(--burgundy);cursor:pointer;font-family:inherit;
+  transition:background .2s,color .2s,border-color .2s;text-decoration:none;
+}
+.btn:hover{text-decoration:none}
 .btn-primary{background:var(--burgundy);color:#fff}
-.btn-primary:hover{background:var(--burgundy-dark)}
+.btn-primary:hover{background:var(--burgundy-dark);border-color:var(--burgundy-dark)}
 .btn-ghost{color:var(--burgundy);background:transparent}
-.credit{margin-top:26px;padding-top:14px;border-top:1px solid #E3D7B8;font-size:12.5px;color:var(--muted);text-align:center;line-height:2}
+.btn-ghost:hover{background:var(--burgundy-soft)}
+.btn-sm{padding:5px 12px;font-size:12.5px}
 
-/* کارت‌های پرونده شهر — شبیه کارت‌های کتابخانه: تخت، خلوت، هر کارت یک موضوع */
-.cards{display:grid;gap:18px}
-.card{background:var(--cream-2);border:1.5px solid var(--navy);outline:1px solid var(--burgundy);outline-offset:3px;border-radius:6px;padding:20px 22px}
-.card h2{margin:0 0 12px;font-size:17px;color:var(--burgundy);display:flex;align-items:center;gap:9px}
-.card h2::before{content:"";width:10px;height:10px;background:var(--burgundy);transform:rotate(45deg);flex:0 0 auto}
+.credit{
+  margin-top:30px;padding-top:16px;border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);text-align:center;line-height:2;
+}
+
+/* فهرست دسترسی سریع درون صفحه پرونده */
+.subnav{
+  display:flex;flex-wrap:wrap;gap:6px;justify-content:center;
+  margin:0 0 22px;padding:10px 12px;
+  background:var(--cream-2);border:1px solid var(--line);border-radius:8px;
+}
+.subnav a{
+  font-size:12.5px;color:var(--navy);padding:4px 11px;border-radius:16px;
+  border:1px solid transparent;transition:all .2s;text-decoration:none;
+}
+.subnav a:hover{background:var(--cream-3);border-color:var(--gold);color:var(--burgundy);text-decoration:none}
+
+/* راهنمای وضعیت اعتبار و نوع داده */
+.legend{
+  display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;
+  background:var(--cream-2);border:1px dashed var(--gold);border-radius:8px;
+  padding:11px 15px;font-size:12.5px;color:var(--ink);margin:0 0 22px;
+}
+.legend-title{font-weight:700;color:var(--navy)}
+.badge{
+  display:inline-flex;align-items:center;
+  font-size:11.5px;font-weight:600;padding:2px 9px;border-radius:999px;
+  line-height:1.7;white-space:nowrap;border:1px solid transparent;
+}
+.badge-text{background:var(--ok-bg);color:var(--ok);border-color:rgba(36,89,59,.25)}
+.badge-hist{background:var(--navy-tint);color:var(--navy);border-color:rgba(28,43,74,.2)}
+.badge-geo{background:var(--gold-soft);color:#755817;border-color:rgba(176,141,60,.35)}
+.badge-review{background:var(--warn-bg);color:var(--warn);border-color:rgba(127,45,36,.3)}
+.badge-later{background:var(--later-bg);color:var(--later);border-color:rgba(92,82,69,.25)}
+
+/* کارت‌های پرونده شهر */
+.cards{display:grid;gap:22px}
+.card{
+  background:var(--cream-2);
+  border:1.5px solid var(--navy);
+  outline:1px solid var(--burgundy);
+  outline-offset:3px;
+  border-radius:6px;
+  padding:22px 24px;
+  scroll-margin-top:20px;
+}
+.card-head{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid var(--line);
+}
+.card h2{
+  margin:0;font-size:17.5px;color:var(--burgundy);
+  display:flex;align-items:center;gap:9px;
+}
+.card h2::before{
+  content:"";width:10px;height:10px;background:var(--burgundy);
+  transform:rotate(45deg);flex:0 0 auto;
+}
+.card h3{margin:14px 0 6px;font-size:15px;color:var(--navy)}
+
 table.info{width:100%;border-collapse:collapse;font-size:14px}
-table.info td{padding:7px 4px;border-bottom:1px solid #E7DcBE;vertical-align:top;line-height:1.9}
-table.info td:first-child{color:var(--muted);width:34%}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{background:var(--navy);color:var(--cream);border-radius:20px;padding:5px 13px;font-size:13px}
-.chip b{color:#E9C979;font-weight:600}
-/* خط زمانی: نوار عمودی، نقطه‌های لوزی زرشکی */
-.timeline{list-style:none;margin:0;padding:0 6px 0 0}
-.timeline li{position:relative;padding:0 26px 16px 0;border-right:2px solid #D9C99A;margin-right:5px}
-.timeline li::before{content:"";position:absolute;right:-8px;top:4px;width:12px;height:12px;background:var(--burgundy);transform:rotate(45deg);border:2px solid var(--cream-2)}
-.timeline .when{font-weight:700;color:var(--navy);font-size:14px}
-.timeline .what{font-size:14px;line-height:1.9}
-p.body{font-size:14.5px;line-height:2.1;text-align:justify;margin:0}
-.src-note{font-size:12px;color:var(--muted)}
-ol.sources{font-size:14.5px;line-height:2.2;padding-right:22px}
-ol.sources li{margin-bottom:10px}
+table.info th,table.info td{padding:9px 8px;border-bottom:1px solid #E7DCBE;vertical-align:top;line-height:1.9;text-align:right}
+table.info th{font-size:12.5px;color:var(--navy);background:var(--cream);font-weight:700}
+table.info td:first-child{color:var(--muted);font-weight:600;width:24%}
+table.info tr:last-child td{border-bottom:none}
+.tbl-wrap{overflow-x:auto}
 
-/* صفحه نقشه */
-#map{position:fixed;inset:0;z-index:1}
-.map-head{position:fixed;top:0;right:0;left:0;z-index:1000}
-.map-intro{position:fixed;top:76px;right:14px;z-index:1000;max-width:330px;background:var(--cream-2);border:1.5px solid var(--navy);outline:1px solid var(--burgundy);outline-offset:3px;border-radius:6px;padding:14px 16px;box-shadow:0 8px 24px rgba(28,43,74,.18)}
-.map-intro h1{font-family:"Noto Nastaliq Urdu",serif;color:var(--burgundy);font-size:21px;line-height:1.9;margin:0 0 6px}
-.map-intro p{font-size:12.5px;line-height:1.95;color:var(--ink);margin:0 0 8px}
-/* نشان لوزی کاشی روی نقشه */
-.tile-marker{width:22px;height:22px;background:var(--burgundy);transform:rotate(45deg);border:3px solid var(--cream);box-shadow:0 2px 8px rgba(0,0,0,.4);cursor:pointer}
-.tile-marker:hover{background:var(--navy)}
-.map-panel{position:fixed;top:0;left:0;bottom:0;width:min(360px,92vw);z-index:1100;background:var(--cream-2);border-right:1.5px solid var(--navy);padding:20px;overflow-y:auto;transform:translateX(-106%);transition:transform .35s ease;box-shadow:6px 0 24px rgba(0,0,0,.2)}
-.map-panel.open{transform:translateX(0)}
-.map-panel h2{font-family:"Noto Nastaliq Urdu",serif;color:var(--burgundy);font-size:24px;margin:4px 0 10px}
-.btn-close{background:none;border:1px solid #C9B98A;border-radius:8px;padding:4px 11px;cursor:pointer;font-size:13px;font-family:inherit}
-@media (max-width:640px){.map-intro{max-width:calc(100vw - 28px)}h1.title{font-size:27px}.frame{padding:20px 16px}}
+/* دکمه‌های فیلتر (خط زمانی) */
+.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.filter-btn{
+  font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;
+  padding:6px 14px;border-radius:20px;
+  border:1.5px solid var(--navy);background:transparent;color:var(--navy);
+  transition:all .2s;
+}
+.filter-btn:hover{background:var(--navy-tint)}
+.filter-btn[aria-pressed="true"]{background:var(--burgundy);border-color:var(--burgundy);color:var(--cream)}
+
+/* خط زمانی پرونده */
+.timeline{list-style:none;margin:0;padding:0 6px 0 0}
+.timeline li{
+  position:relative;padding:0 26px 18px 0;
+  border-right:2px solid #D9C99A;margin-right:5px;
+}
+.timeline li:last-child{padding-bottom:4px}
+.timeline li::before{
+  content:"";position:absolute;right:-8px;top:5px;
+  width:12px;height:12px;background:var(--burgundy);
+  transform:rotate(45deg);border:2px solid var(--cream-2);
+}
+.timeline li.tl-later::before{background:var(--later)}
+.timeline li.tl-pre::before{background:var(--navy)}
+.timeline .tl-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:3px}
+.timeline .when{font-weight:700;color:var(--navy);font-size:14.5px}
+.timeline .what{font-size:14px;line-height:1.9;color:var(--ink)}
+.timeline .tl-src{font-size:12px;color:var(--muted);margin-top:2px}
+.hidden{display:none !important}
+
+/* شبکه کارت‌های شخصیت‌ها */
+.people-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.person-card{
+  background:var(--cream);border:1px solid var(--line);border-right:3px solid var(--navy);
+  border-radius:6px;padding:13px 15px;display:flex;flex-direction:column;gap:6px;
+}
+.person-card h3{margin:0;font-size:15px;color:var(--burgundy)}
+.person-card p{margin:0;font-size:13.5px;line-height:1.85;color:var(--ink)}
+.person-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px}
+
+/* کادرهای نکته، هشدار و ملاحظات پژوهشی */
+.note-box{
+  border-radius:6px;padding:13px 16px;font-size:13.5px;line-height:1.95;margin-top:14px;
+}
+.note-review{background:var(--warn-bg);border:1px solid rgba(127,45,36,.35);border-right:4px solid var(--warn)}
+.note-info{background:var(--gold-soft);border:1px solid rgba(176,141,60,.4);border-right:4px solid var(--gold)}
+.caveat-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.caveat-item{
+  background:var(--cream);border:1px solid var(--line);border-right:3px solid var(--burgundy);
+  border-radius:6px;padding:11px 14px;font-size:13.5px;line-height:1.9;
+}
+.caveat-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px}
+.caveat-title{font-weight:700;color:var(--navy)}
+
+/* نقشه تعاملی درون صفحه پرونده غزنه */
+.inline-map-controls{
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;
+  margin-bottom:12px;padding:10px 12px;background:var(--cream);border:1px solid var(--line);border-radius:6px;
+}
+.inline-map-group{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12.5px}
+.inline-map-group label{display:inline-flex;align-items:center;gap:4px;cursor:pointer;color:var(--ink)}
+.inline-map-group input{accent-color:var(--burgundy)}
+.inline-map{
+  width:100%;height:390px;border:1.5px solid var(--navy);border-radius:6px;overflow:hidden;z-index:1;
+}
+.inline-map.sepia .leaflet-tile-pane{filter:sepia(.55) saturate(.65) brightness(1.03) contrast(.96)}
+
+p.body{font-size:14.5px;line-height:2.1;text-align:justify;margin:0 0 10px}
+p.body:last-child{margin-bottom:0}
+.src-note{font-size:12px;color:var(--muted);line-height:1.8;margin:8px 0 0}
+ol.sources{font-size:14px;line-height:2.1;padding-right:22px;margin:0}
+ol.sources li{margin-bottom:10px}
+.method-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));margin:14px 0}
+.method-item{background:var(--cream);border:1px solid var(--line);border-radius:6px;padding:12px 14px;font-size:13.5px}
+.method-item h3{margin:0 0 6px;font-size:14px;color:var(--burgundy)}
 
 /* ============================================================
-   v4 — ارتقای تجربه کاربری (فقط طراحی؛ محتوا بدون تغییر)
+   صفحه نقشه تمام‌صفحه (index.html)
    ============================================================ */
+#map{position:fixed;inset:0;z-index:1}
+.map-head{position:fixed;top:0;right:0;left:0;z-index:1000}
 
-/* --- صفحه ورود (اسپلش) --- */
-.splash{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;
+.map-intro{
+  position:fixed;top:78px;right:14px;z-index:950;max-width:340px;
+  background:rgba(253,250,241,.96);backdrop-filter:blur(6px);
+  border:1.5px solid var(--navy);outline:1px solid var(--burgundy);outline-offset:3px;
+  border-radius:6px;padding:14px 16px;
+  box-shadow:0 8px 24px rgba(28,43,74,.18);
+  transition:transform .25s ease,opacity .25s ease;
+}
+.map-intro.collapsed{display:none}
+.map-intro-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.map-intro h1{font-family:"Noto Nastaliq Urdu",serif;color:var(--burgundy);font-size:21px;line-height:1.85;margin:0 0 6px}
+.map-intro p{font-size:12.5px;line-height:1.9;color:var(--ink);margin:0 0 8px}
+.map-intro-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+
+.map-intro-toggle{
+  position:fixed;top:78px;right:14px;z-index:940;
+  display:none;align-items:center;gap:6px;
+  background:var(--navy);color:var(--cream);border:1.5px solid var(--gold);
+  border-radius:20px;padding:7px 14px;font-size:12.5px;font-weight:600;
+  cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(28,43,74,.25);
+}
+.map-intro-toggle.show{display:inline-flex}
+.map-intro-toggle:hover{background:var(--burgundy)}
+
+/* نشان لوزی کاشی روی نقشه */
+.tile-marker{
+  width:22px;height:22px;background:var(--burgundy);
+  transform:rotate(45deg);border:3px solid var(--cream);
+  box-shadow:0 2px 8px rgba(0,0,0,.4);cursor:pointer;
+  animation:markerglow 2.6s ease-in-out infinite;
+}
+.tile-marker:hover{background:var(--navy)}
+@keyframes markerglow{
+  0%,100%{box-shadow:0 2px 8px rgba(0,0,0,.4)}
+  50%{box-shadow:0 2px 8px rgba(0,0,0,.4),0 0 0 7px rgba(176,141,60,.35),0 0 18px 4px rgba(176,141,60,.45)}
+}
+.geo-ring-marker{
+  width:34px;height:34px;border-radius:50%;
+  border:2px dashed var(--navy);background:rgba(28,43,74,.12);
+}
+
+/* سایدبار تب‌دار */
+.map-panel{
+  position:fixed;top:0;left:0;bottom:0;width:min(380px,94vw);z-index:1100;
+  background:var(--cream-2);border-right:1.5px solid var(--navy);
+  padding:20px;overflow-y:auto;
+  transform:translateX(-106%);transition:transform .35s ease;
+  box-shadow:6px 0 24px rgba(0,0,0,.22);
+}
+.map-panel.open{transform:translateX(0)}
+.map-panel h2{font-family:"Noto Nastaliq Urdu",serif;color:var(--burgundy);font-size:24px;margin:4px 0 10px}
+.btn-close{
+  background:none;border:1px solid #C9B98A;border-radius:8px;
+  padding:4px 10px;cursor:pointer;font-size:12.5px;font-family:inherit;color:var(--ink);
+}
+.btn-close:hover{background:var(--cream-3)}
+
+.panel-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{
+  font-family:inherit;font-size:12.5px;padding:6px 12px;border-radius:18px;
+  border:1.5px solid var(--navy);background:transparent;color:var(--navy);
+  cursor:pointer;transition:all .2s;
+}
+.tab:hover{background:rgba(28,43,74,.08)}
+.tab.active{background:var(--burgundy);border-color:var(--burgundy);color:var(--cream)}
+.tab-pane{display:none}
+.tab-pane.active{display:block;animation:panefade .3s ease}
+@keyframes panefade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.pane-h{font-family:"Noto Nastaliq Urdu",serif;color:var(--burgundy);font-size:21px;margin:2px 0 10px}
+.layer-section{margin-bottom:16px}
+.layer-section-title{
+  font-size:12.5px;font-weight:700;color:var(--navy);
+  margin:0 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line);
+}
+.layer-opt{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:13.5px;line-height:1.75;padding:8px 10px;
+  border:1px solid #E3D7B8;border-radius:8px;margin-bottom:8px;
+  cursor:pointer;background:var(--cream);
+}
+.layer-opt:hover{border-color:var(--gold)}
+.layer-opt.disabled{opacity:.78;cursor:not-allowed;background:var(--cream-3)}
+.layer-opt input{accent-color:var(--burgundy);margin-top:4px;flex:0 0 auto}
+.layer-opt-desc{display:block;font-size:11.5px;color:var(--muted)}
+.opacity-wrap{
+  background:var(--cream);border:1px solid #E3D7B8;border-radius:8px;
+  padding:8px 10px;margin:-2px 0 10px;font-size:12px;color:var(--navy);
+}
+.opacity-wrap input{width:100%;accent-color:var(--burgundy);margin-top:4px}
+
+/* کنترل‌های Leaflet: شیشه‌ای سرمه‌ای/زرشکی */
+.leaflet-bar{border:none !important;box-shadow:0 4px 16px rgba(28,43,74,.28) !important;border-radius:10px !important;overflow:hidden}
+.leaflet-bar a{
+  background:rgba(28,43,74,.84) !important;color:var(--cream) !important;border:none !important;
+  backdrop-filter:blur(6px);width:34px !important;height:34px !important;line-height:34px !important;
+  transition:background .2s;
+}
+.leaflet-bar a:hover{background:var(--burgundy) !important}
+.leaflet-control-attribution{
+  background:rgba(247,240,223,.78) !important;font-size:10px !important;
+  color:var(--muted) !important;backdrop-filter:blur(4px);
+}
+.leaflet-tooltip{
+  font-family:Vazirmatn,Tahoma,sans-serif !important;background:var(--navy) !important;
+  color:var(--cream) !important;border:1px solid var(--gold) !important;border-radius:8px !important;
+  font-size:12.5px !important;box-shadow:0 4px 14px rgba(0,0,0,.3) !important;
+}
+.leaflet-tooltip-top:before{border-top-color:var(--gold) !important}
+#map.sepia .leaflet-tile-pane{filter:sepia(.55) saturate(.65) brightness(1.03) contrast(.96)}
+
+/* صفحه ورود (اسپلش) */
+.splash{
+  position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;
   background:radial-gradient(ellipse at center,var(--cream-2) 0%,var(--cream) 55%,#EFE3C8 100%);
-  transition:opacity .6s ease,visibility .6s}
-.splash.hide{opacity:0;visibility:hidden}
+  transition:opacity .55s ease,visibility .55s;
+}
+.splash.hide{opacity:0;visibility:hidden;pointer-events:none}
 .splash-inner{text-align:center;padding:24px;max-width:520px}
-.shamseh-draw{width:110px;height:110px;margin-bottom:10px}
-.shamseh-draw .draw{stroke-dasharray:100;stroke-dashoffset:100;animation:drawline 2.2s ease forwards}
-.shamseh-draw .draw:nth-child(2){animation-delay:.5s}
+.shamseh-draw{width:108px;height:108px;margin-bottom:10px}
+.shamseh-draw .draw{stroke-dasharray:100;stroke-dashoffset:100;animation:drawline 2s ease forwards}
+.shamseh-draw .draw:nth-child(2){animation-delay:.45s}
 @keyframes drawline{to{stroke-dashoffset:0}}
 .splash-title{font-family:"Noto Nastaliq Urdu",serif;font-weight:700;color:var(--burgundy);font-size:34px;line-height:2;margin:4px 0 0}
 .splash-sub{color:var(--gold);letter-spacing:2px;font-size:12.5px;margin:2px 0 10px}
 .splash-text{color:var(--navy-soft);font-size:14.5px;line-height:2;margin:0 0 20px}
-.splash-btn{font-size:15.5px;padding:11px 34px;animation:btnfade 1s ease .9s both}
+.splash-btn{font-size:15px;padding:11px 32px;animation:btnfade .9s ease .7s both}
 @keyframes btnfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-/* --- سایدبار تب‌دار --- */
-.panel-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
-.tabs{display:flex;gap:6px}
-.tab{font-family:inherit;font-size:13px;padding:6px 13px;border-radius:18px;border:1.5px solid var(--navy);
-  background:transparent;color:var(--navy);cursor:pointer;transition:all .25s}
-.tab:hover{background:rgba(28,43,74,.08)}
-.tab.active{background:var(--burgundy);border-color:var(--burgundy);color:var(--cream)}
-.tab-pane{display:none}
-.tab-pane.active{display:block;animation:panefade .35s ease}
-@keyframes panefade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
-.pane-h{font-family:"Noto Nastaliq Urdu",serif;color:var(--burgundy);font-size:21px;margin:2px 0 10px}
-.layer-opt{display:block;font-size:14px;line-height:2;padding:7px 10px;border:1px solid #E3D7B8;border-radius:8px;margin-bottom:8px;cursor:pointer;background:var(--cream)}
-.layer-opt:hover{border-color:var(--gold)}
-.layer-opt input{accent-color:var(--burgundy);margin-left:6px}
-
-/* --- کنترل‌های نقشه: شیشه‌ای زرشکی/سرمه‌ای --- */
-.leaflet-bar{border:none !important;box-shadow:0 4px 16px rgba(28,43,74,.28) !important;border-radius:10px !important;overflow:hidden}
-.leaflet-bar a{background:rgba(28,43,74,.82) !important;color:var(--cream) !important;border:none !important;
-  backdrop-filter:blur(6px);width:34px !important;height:34px !important;line-height:34px !important;transition:background .25s}
-.leaflet-bar a:hover{background:var(--burgundy) !important}
-.leaflet-control-attribution{background:rgba(247,240,223,.75) !important;font-size:10px !important;color:var(--muted) !important;backdrop-filter:blur(4px)}
-.leaflet-tooltip{font-family:Vazirmatn,Tahoma,sans-serif !important;background:var(--navy) !important;color:var(--cream) !important;
-  border:1px solid var(--gold) !important;border-radius:8px !important;font-size:12.5px !important;box-shadow:0 4px 14px rgba(0,0,0,.3) !important}
-.leaflet-tooltip-top:before{border-top-color:var(--gold) !important}
-
-/* --- حالت کهنه (سپیا) برای کاشی‌های نقشه مدرن --- */
-#map.sepia .leaflet-tile-pane{filter:sepia(.55) saturate(.65) brightness(1.03) contrast(.96)}
-
-/* --- درخشش نشان لوزی --- */
-.tile-marker{animation:markerglow 2.6s ease-in-out infinite}
-@keyframes markerglow{0%,100%{box-shadow:0 2px 8px rgba(0,0,0,.4)}50%{box-shadow:0 2px 8px rgba(0,0,0,.4),0 0 0 7px rgba(176,141,60,.35),0 0 18px 4px rgba(176,141,60,.45)}}
-
-/* --- نوار زمان --- */
-.timeline-bar{position:fixed;bottom:14px;right:50%;transform:translateX(50%);z-index:900;width:min(680px,calc(100vw - 24px));
-  background:rgba(253,250,241,.88);backdrop-filter:blur(8px);border:1.5px solid var(--navy);outline:1px solid var(--burgundy);outline-offset:2px;
-  border-radius:12px;padding:9px 16px 6px;box-shadow:0 10px 28px rgba(28,43,74,.22)}
-.tl-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+/* نوار زمان پایین نقشه */
+.timeline-bar{
+  position:fixed;bottom:14px;right:50%;transform:translateX(50%);z-index:900;
+  width:min(700px,calc(100vw - 24px));
+  background:rgba(253,250,241,.92);backdrop-filter:blur(8px);
+  border:1.5px solid var(--navy);outline:1px solid var(--burgundy);outline-offset:2px;
+  border-radius:12px;padding:10px 16px 8px;
+  box-shadow:0 10px 28px rgba(28,43,74,.22);
+}
+.tl-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.tl-title-group{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .tl-title{font-weight:700;color:var(--burgundy);font-size:13px}
-.tl-label{font-size:12.5px;color:var(--navy)}
-.timeline-bar input[type=range]{width:100%;accent-color:var(--burgundy);margin:5px 0 0;cursor:pointer}
-.tl-marks{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);padding:0 1px}
+.tl-label{font-size:12.5px;color:var(--navy);line-height:1.6}
+.timeline-bar input[type=range]{width:100%;accent-color:var(--burgundy);margin:6px 0 2px;cursor:pointer}
+.tl-marks{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);padding:0 2px}
+.tl-marks span.active-mark{color:var(--burgundy);font-weight:700}
 
-/* --- ظاهرشدن تدریجی کارت‌ها هنگام اسکرول --- */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+/* ظاهرشدن تدریجی کارت‌ها هنگام اسکرول */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
 .reveal.visible{opacity:1;transform:none}
 
-@media (max-width:640px){
+/* واکنش‌گرایی موبایل */
+@media (max-width:720px){
+  .topbar{padding:10px 14px;gap:10px}
+  nav.main{width:100%;justify-content:flex-start}
+  nav.main a{font-size:12px;padding:5px 11px}
+  .map-intro{top:106px;right:12px;left:12px;max-width:none;padding:12px 14px}
+  .map-intro-toggle{top:106px;right:12px}
   .splash-title{font-size:26px}
-  .timeline-bar{bottom:8px;padding:7px 12px 4px}
+  h1.title{font-size:27px}
+  .frame,.card{padding:18px 15px}
+  .inline-map{height:300px}
+  .timeline-bar{bottom:8px;padding:8px 12px 6px}
   .tl-label{font-size:11.5px}
+  .tl-marks{font-size:10px}
+  table.info td:first-child{width:32%}
 }

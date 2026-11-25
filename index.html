@@ -7,73 +7,151 @@
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<title>اطلس جغرافیایی تاریخ بیهقی — نقشه</title></head><body>
+<title>اطلس جغرافیایی تاریخ بیهقی — نقشه تعاملی</title>
+</head>
+<body>
 
 <!-- صفحه ورود (اسپلش) -->
-<div id="splash" class="splash" role="dialog" aria-label="خوش آمدید">
+<div id="splash" class="splash" role="dialog" aria-label="ورود به اطلس">
   <div class="splash-inner">
-    <svg class="shamseh-draw" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#B08D3C" stroke-width="1.6"><path class="draw" pathLength="100" d="M50 4 L60 40 L96 50 L60 60 L50 96 L40 60 L4 50 L40 40 Z"/><rect class="draw" pathLength="100" x="32" y="32" width="36" height="36" transform="rotate(45 50 50)"/></g><circle cx="50" cy="50" r="5" fill="#701E2A"/></svg>
+    <svg class="shamseh-draw" viewBox="0 0 100 100" aria-hidden="true">
+      <g fill="none" stroke="#B08D3C" stroke-width="1.6">
+        <path class="draw" pathLength="100" d="M50 4 L60 40 L96 50 L60 60 L50 96 L40 60 L4 50 L40 40 Z"/>
+        <rect class="draw" pathLength="100" x="32" y="32" width="36" height="36" transform="rotate(45 50 50)"/>
+      </g>
+      <circle cx="50" cy="50" r="5" fill="#701E2A"/>
+    </svg>
     <h1 class="splash-title">اطلس جغرافیایی تاریخ بیهقی</h1>
     <p class="splash-sub">Beyhaqi Geographical Atlas</p>
-    <p class="splash-text">مکان‌های نام‌برده‌شده در تاریخ بیهقی، بر پایه نقشه مرجع سیدی–یاحقی</p>
+    <p class="splash-text">پژوهشی در حوزه علوم انسانی دیجیتال برای پیوند متن تاریخ بیهقی، جغرافیای تاریخی و جغرافیای معاصر — مرحله نخست: غزنه</p>
     <button id="enter-atlas" class="btn btn-primary splash-btn" type="button">ورود به اطلس</button>
   </div>
 </div>
 
-<header class="topbar map-head"><div class="brand"><svg class="shamseh" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#B08D3C" stroke-width="2"><path d="M50 4 L60 40 L96 50 L60 60 L50 96 L40 60 L4 50 L40 40 Z"/><rect x="32" y="32" width="36" height="36" transform="rotate(45 50 50)"/></g><circle cx="50" cy="50" r="6" fill="#701E2A"/></svg><div><div class="brand-title">اطلس جغرافیایی تاریخ بیهقی</div><div class="brand-sub">Beyhaqi Geographical Atlas</div></div></div>
-<nav class="main"><a href="index.html">نقشه</a><a href="ghazna.html">پرونده غزنه</a><a href="about.html">درباره پژوهش</a><a href="sources.html">منابع</a></nav></header>
-<div id="map"></div>
-<section class="map-intro">
-  <h1>اطلس جغرافیایی تاریخ بیهقی</h1>
-  <p>مکان‌های نام‌برده‌شده در تاریخ بیهقی، بر پایه نقشه مرجع سیدی–یاحقی</p>
-  <p>تاریخ بیهقی، نوشته ابوالفضل بیهقی (قرن پنجم هجری)، روایت دربار غزنوی است. این اطلس مکان‌های این کتاب را روی نقشه نشان می‌دهد؛ با کلیک روی هر مکان، پرونده کوتاه آن باز می‌شود.</p>
-  <button id="open-ghazna" class="btn btn-primary" type="button">مشاهده غزنه</button>
+<header class="topbar map-head">
+  <a class="brand" href="index.html">
+    <svg class="shamseh" viewBox="0 0 100 100" aria-hidden="true">
+      <g fill="none" stroke="#B08D3C" stroke-width="2">
+        <path d="M50 4 L60 40 L96 50 L60 60 L50 96 L40 60 L4 50 L40 40 Z"/>
+        <rect x="32" y="32" width="36" height="36" transform="rotate(45 50 50)"/>
+      </g>
+      <circle cx="50" cy="50" r="6" fill="#701E2A"/>
+    </svg>
+    <div>
+      <div class="brand-title">اطلس جغرافیایی تاریخ بیهقی</div>
+      <div class="brand-sub">Beyhaqi Geographical Atlas</div>
+    </div>
+  </a>
+  <nav class="main" aria-label="ناوبری اصلی">
+    <a href="index.html" class="active">نقشه</a>
+    <a href="ghazna.html">پرونده غزنه</a>
+    <a href="about.html">درباره پژوهش</a>
+    <a href="sources.html">منابع</a>
+  </nav>
+</header>
+
+<div id="map" role="region" aria-label="نقشه تعاملی تاریخ بیهقی"></div>
+
+<!-- دکمه بازکردن مجدد کارت معرفی در صورت بستن -->
+<button id="map-intro-toggle" class="map-intro-toggle" type="button">معرفی اطلس</button>
+
+<section id="map-intro" class="map-intro" aria-label="معرفی کوتاه اطلس">
+  <div class="map-intro-head">
+    <h1>اطلس جغرافیایی تاریخ بیهقی</h1>
+    <button id="close-intro" class="btn-close" type="button" aria-label="بستن کادر معرفی">✕</button>
+  </div>
+  <p>پروژه پژوهشی علوم انسانی دیجیتال بر پایه نقشه مرجع سیدی–یاحقی و داده‌های تأییدشده. اولویت فعلی این نسخه، بررسی پژوهشی <strong>غزنه در عصر بیهقی</strong> است.</p>
+  <div class="map-intro-actions">
+    <button id="open-ghazna" class="btn btn-primary btn-sm" type="button">مشاهده غزنه</button>
+    <button id="open-layers-btn" class="btn btn-ghost btn-sm" type="button">تنظیم لایه‌ها</button>
+  </div>
 </section>
 
 <!-- سایدبار تب‌دار -->
-<aside id="map-panel" class="map-panel" aria-label="پنل اطلس">
+<aside id="map-panel" class="map-panel" aria-label="پنل پژوهشی نقشه">
   <div class="panel-top">
     <div class="tabs" role="tablist">
-      <button class="tab active" data-tab="tab-place" type="button">پرونده</button>
-      <button class="tab" data-tab="tab-layers" type="button">لایه‌ها</button>
-      <button class="tab" data-tab="tab-guide" type="button">راهنما</button>
+      <button class="tab active" data-tab="tab-place" role="tab" aria-selected="true" type="button">پرونده</button>
+      <button class="tab" data-tab="tab-layers" role="tab" aria-selected="false" type="button">لایه‌ها</button>
+      <button class="tab" data-tab="tab-guide" role="tab" aria-selected="false" type="button">راهنما</button>
     </div>
     <button id="close-panel" class="btn-close" type="button">✕ بستن</button>
   </div>
 
-  <div id="tab-place" class="tab-pane active">
-    <h2>غزنه / غزنین</h2>
-    <table class="info">
-      <tr><td>نام امروزی</td><td>غزنی، افغانستان</td></tr>
-      <tr><td>مختصات</td><td>۳۳٫۵۶۶۷ شمالی، ۶۸٫۴۵۰۰ شرقی</td></tr>
-      <tr><td>نقش</td><td>پایتخت غزنویان از ۹۷۷ میلادی</td></tr>
-    </table>
-    <p class="src-note">منبع: Encyclopaedia Iranica، مدخل ḠAZNĪ</p>
-    <div class="btns"><a class="btn btn-primary" href="ghazna.html">پرونده کامل غزنه</a></div>
+  <!-- تب ۱: پرونده کوتاه (رندر پویا از js/data.js) -->
+  <div id="tab-place" class="tab-pane active" role="tabpanel">
+    <div id="tab-place-content"></div>
   </div>
 
-  <div id="tab-layers" class="tab-pane">
-    <h2 class="pane-h">لایه‌های نقشه</h2>
-    <label class="layer-opt"><input type="radio" name="baselayer" value="ref" checked> نقشه مرجع بیهقی (سیدی–یاحقی)</label>
-    <label class="layer-opt"><input type="radio" name="baselayer" value="osm"> نقشه مدرن</label>
-    <label class="layer-opt"><input type="radio" name="baselayer" value="sepia"> نقشه مدرن — حالت کهنه (سپیا)</label>
-    <p class="src-note">جانمایی نقشه مرجع در این پیش‌نمایش تقریبی است و نسخه دقیق آن با ژئورفرنس تخصصی کامل می‌شود.</p>
+  <!-- تب ۲: تفکیک نقشه پایه از لایه‌های پژوهشی -->
+  <div id="tab-layers" class="tab-pane" role="tabpanel">
+    <h2 class="pane-h">مدیریت نقشه و لایه‌ها</h2>
+
+    <div class="layer-section">
+      <div class="layer-section-title">۱. نقشه پایه (Base Map)</div>
+      <label class="layer-opt">
+        <input type="radio" name="baselayer" value="ref" checked>
+        <span>نقشه مرجع تاریخ بیهقی (سیدی–یاحقی)<span class="layer-opt-desc">جانمایی این پیش‌نمایش تقریبی است.</span></span>
+      </label>
+      <label class="layer-opt">
+        <input type="radio" name="baselayer" value="overlay">
+        <span>همپوشانی نقشه مرجع روی نقشه معاصر<span class="layer-opt-desc">برای مقایسه مستقیم جغرافیای تاریخی و امروزی</span></span>
+      </label>
+      <div id="ref-opacity-wrap" class="opacity-wrap">
+        شفافیت نقشه مرجع: <strong id="ref-opacity-val">۹۲٪</strong>
+        <input id="ref-opacity" type="range" min="0.2" max="1" step="0.05" value="0.92" aria-label="شفافیت نقشه مرجع">
+      </div>
+      <label class="layer-opt">
+        <input type="radio" name="baselayer" value="osm">
+        <span>نقشه جغرافیایی معاصر (OpenStreetMap)</span>
+      </label>
+      <label class="layer-opt">
+        <input type="radio" name="baselayer" value="sepia">
+        <span>نقشه معاصر — حالت کهنه (سپیا)</span>
+      </label>
+    </div>
+
+    <div class="layer-section">
+      <div class="layer-section-title">۲. لایه‌های پژوهشی (Research Layers)</div>
+      <label class="layer-opt">
+        <input id="layer-textual" type="checkbox" checked>
+        <span>مکان‌های مستند در متن و منابع پایه<span class="layer-opt-desc">نشان لوزی زرشکی — فعلاً: غزنه</span></span>
+      </label>
+      <label class="layer-opt">
+        <input id="layer-contemporary" type="checkbox" checked>
+        <span>تطبیق موقعیت جغرافیایی معاصر<span class="layer-opt-desc">حلقه نقطه‌چین سرمه‌ای — شهر غزنی امروز</span></span>
+      </label>
+      <label class="layer-opt disabled" title="داده مکانی تأییدشده برای آثار عصر بیهقی ثبت نشده است">
+        <input type="checkbox" disabled>
+        <span>آثار تاریخی و میراث مادی عصر بیهقی <span class="badge badge-review">نیازمند بررسی</span><span class="layer-opt-desc">بناهای موجود مانند مناره‌ها و کاخ مسعود سوم متأخرند و در این لایه قرار نمی‌گیرند.</span></span>
+      </label>
+    </div>
   </div>
 
-  <div id="tab-guide" class="tab-pane">
-    <h2 class="pane-h">راهنما</h2>
-    <p class="body">برای مشاهده پرونده هر مکان، روی نشان لوزی آن روی نقشه کلیک کنید. با نوار زمان پایین نقشه می‌توانید رویدادهای مهم دوره غزنوی را مرور کنید. از تب «لایه‌ها» می‌توانید میان نقشه مرجع و نقشه مدرن جابه‌جا شوید.</p>
+  <!-- تب ۳: راهنمای استفاده -->
+  <div id="tab-guide" class="tab-pane" role="tabpanel">
+    <h2 class="pane-h">راهنمای اطلس</h2>
+    <p class="body">برای مشاهده شناسنامه کوتاه غزنه، روی نشان لوزی زرشکی کلیک کنید یا دکمه «مشاهده غزنه» را بزنید.</p>
+    <p class="body">در تب «لایه‌ها»، نقشه پایه از لایه‌های پژوهشی تفکیک شده است؛ می‌توانید بین نقشه مرجع سیدی–یاحقی و نقشه معاصر OpenStreetMap جابه‌جا شوید یا هر دو را با هم مقایسه کنید.</p>
+    <p class="body">نوار خط زمانی در پایین صفحه، رویدادهای تأییدشده غزنه را از ۹۷۷ تا ۱۲۲۱ میلادی با تفکیک روشن «عصر بیهقی» از دوره‌های متأخر نمایش می‌دهد.</p>
   </div>
 </aside>
 
-<!-- نوار زمان -->
-<div id="timeline-bar" class="timeline-bar">
-  <div class="tl-head"><span class="tl-title">خط زمانی غزنویان</span><span id="tl-label" class="tl-label">۹۷۷ میلادی — غزنه پایتخت غزنویان شد</span></div>
-  <input id="tl-range" type="range" min="977" max="1041" step="1" value="977" aria-label="خط زمانی">
-  <div class="tl-marks"><span>۹۷۷</span><span>۹۹۸</span><span>۱۰۳۰</span><span>۱۰۳۱</span><span>۱۰۴۱</span></div>
+<!-- نوار زمان تعاملی -->
+<div id="timeline-bar" class="timeline-bar" aria-label="خط زمانی غزنه">
+  <div class="tl-head">
+    <div class="tl-title-group">
+      <span class="tl-title">خط زمانی غزنه</span>
+      <span id="tl-period-badge" class="badge badge-text">عصر بیهقی</span>
+    </div>
+    <span id="tl-label" class="tl-label">۱۰۳۰ تا ۱۰۴۱ میلادی — سلطنت سلطان مسعود اول</span>
+  </div>
+  <input id="tl-range" type="range" min="0" max="5" step="1" value="2" aria-label="انتخاب رویداد در خط زمانی">
+  <div id="tl-marks" class="tl-marks"></div>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="js/data.js"></script>
 <script src="js/map.js"></script>
-</body></html>
+</body>
+</html>
