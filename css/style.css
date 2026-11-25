@@ -12,7 +12,7 @@ html,body{margin:0;padding:0}
 body{background:var(--cream);color:var(--ink);min-height:100vh}
 /* نقش هشت‌پر محو روی زمینه کرم */
 body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.05;z-index:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23701E2A' stroke-width='1.4'%3E%3Cpath d='M48 8 L58 38 L88 48 L58 58 L48 88 L38 58 L8 48 L38 38 Z'/%3E%3Crect x='30' y='30' width='36' height='36' transform='rotate(45 48 48)'/%3E%3C/g%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23701E2A' stroke-width='1.3'%3E%3Cpath d='M60 16 L72 48 L104 60 L72 72 L60 104 L48 72 L16 60 L48 48 Z'/%3E%3Crect x='41' y='41' width='38' height='38' transform='rotate(45 60 60)'/%3E%3Ccircle cx='60' cy='60' r='7'/%3E%3Crect x='-11' y='-11' width='22' height='22' transform='rotate(45 0 0)'/%3E%3Crect x='109' y='-11' width='22' height='22' transform='rotate(45 120 0)'/%3E%3Crect x='-11' y='109' width='22' height='22' transform='rotate(45 0 120)'/%3E%3Crect x='109' y='109' width='22' height='22' transform='rotate(45 120 120)'/%3E%3C/g%3E%3C/svg%3E");
 }
 a{color:var(--burgundy);text-decoration:none}
 .wrap{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:28px 18px 56px}
@@ -81,3 +81,75 @@ ol.sources li{margin-bottom:10px}
 .map-panel h2{font-family:"Noto Nastaliq Urdu",serif;color:var(--burgundy);font-size:24px;margin:4px 0 10px}
 .btn-close{background:none;border:1px solid #C9B98A;border-radius:8px;padding:4px 11px;cursor:pointer;font-size:13px;font-family:inherit}
 @media (max-width:640px){.map-intro{max-width:calc(100vw - 28px)}h1.title{font-size:27px}.frame{padding:20px 16px}}
+
+/* ============================================================
+   v4 — ارتقای تجربه کاربری (فقط طراحی؛ محتوا بدون تغییر)
+   ============================================================ */
+
+/* --- صفحه ورود (اسپلش) --- */
+.splash{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse at center,var(--cream-2) 0%,var(--cream) 55%,#EFE3C8 100%);
+  transition:opacity .6s ease,visibility .6s}
+.splash.hide{opacity:0;visibility:hidden}
+.splash-inner{text-align:center;padding:24px;max-width:520px}
+.shamseh-draw{width:110px;height:110px;margin-bottom:10px}
+.shamseh-draw .draw{stroke-dasharray:100;stroke-dashoffset:100;animation:drawline 2.2s ease forwards}
+.shamseh-draw .draw:nth-child(2){animation-delay:.5s}
+@keyframes drawline{to{stroke-dashoffset:0}}
+.splash-title{font-family:"Noto Nastaliq Urdu",serif;font-weight:700;color:var(--burgundy);font-size:34px;line-height:2;margin:4px 0 0}
+.splash-sub{color:var(--gold);letter-spacing:2px;font-size:12.5px;margin:2px 0 10px}
+.splash-text{color:var(--navy-soft);font-size:14.5px;line-height:2;margin:0 0 20px}
+.splash-btn{font-size:15.5px;padding:11px 34px;animation:btnfade 1s ease .9s both}
+@keyframes btnfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* --- سایدبار تب‌دار --- */
+.panel-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.tabs{display:flex;gap:6px}
+.tab{font-family:inherit;font-size:13px;padding:6px 13px;border-radius:18px;border:1.5px solid var(--navy);
+  background:transparent;color:var(--navy);cursor:pointer;transition:all .25s}
+.tab:hover{background:rgba(28,43,74,.08)}
+.tab.active{background:var(--burgundy);border-color:var(--burgundy);color:var(--cream)}
+.tab-pane{display:none}
+.tab-pane.active{display:block;animation:panefade .35s ease}
+@keyframes panefade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.pane-h{font-family:"Noto Nastaliq Urdu",serif;color:var(--burgundy);font-size:21px;margin:2px 0 10px}
+.layer-opt{display:block;font-size:14px;line-height:2;padding:7px 10px;border:1px solid #E3D7B8;border-radius:8px;margin-bottom:8px;cursor:pointer;background:var(--cream)}
+.layer-opt:hover{border-color:var(--gold)}
+.layer-opt input{accent-color:var(--burgundy);margin-left:6px}
+
+/* --- کنترل‌های نقشه: شیشه‌ای زرشکی/سرمه‌ای --- */
+.leaflet-bar{border:none !important;box-shadow:0 4px 16px rgba(28,43,74,.28) !important;border-radius:10px !important;overflow:hidden}
+.leaflet-bar a{background:rgba(28,43,74,.82) !important;color:var(--cream) !important;border:none !important;
+  backdrop-filter:blur(6px);width:34px !important;height:34px !important;line-height:34px !important;transition:background .25s}
+.leaflet-bar a:hover{background:var(--burgundy) !important}
+.leaflet-control-attribution{background:rgba(247,240,223,.75) !important;font-size:10px !important;color:var(--muted) !important;backdrop-filter:blur(4px)}
+.leaflet-tooltip{font-family:Vazirmatn,Tahoma,sans-serif !important;background:var(--navy) !important;color:var(--cream) !important;
+  border:1px solid var(--gold) !important;border-radius:8px !important;font-size:12.5px !important;box-shadow:0 4px 14px rgba(0,0,0,.3) !important}
+.leaflet-tooltip-top:before{border-top-color:var(--gold) !important}
+
+/* --- حالت کهنه (سپیا) برای کاشی‌های نقشه مدرن --- */
+#map.sepia .leaflet-tile-pane{filter:sepia(.55) saturate(.65) brightness(1.03) contrast(.96)}
+
+/* --- درخشش نشان لوزی --- */
+.tile-marker{animation:markerglow 2.6s ease-in-out infinite}
+@keyframes markerglow{0%,100%{box-shadow:0 2px 8px rgba(0,0,0,.4)}50%{box-shadow:0 2px 8px rgba(0,0,0,.4),0 0 0 7px rgba(176,141,60,.35),0 0 18px 4px rgba(176,141,60,.45)}}
+
+/* --- نوار زمان --- */
+.timeline-bar{position:fixed;bottom:14px;right:50%;transform:translateX(50%);z-index:900;width:min(680px,calc(100vw - 24px));
+  background:rgba(253,250,241,.88);backdrop-filter:blur(8px);border:1.5px solid var(--navy);outline:1px solid var(--burgundy);outline-offset:2px;
+  border-radius:12px;padding:9px 16px 6px;box-shadow:0 10px 28px rgba(28,43,74,.22)}
+.tl-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.tl-title{font-weight:700;color:var(--burgundy);font-size:13px}
+.tl-label{font-size:12.5px;color:var(--navy)}
+.timeline-bar input[type=range]{width:100%;accent-color:var(--burgundy);margin:5px 0 0;cursor:pointer}
+.tl-marks{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);padding:0 1px}
+
+/* --- ظاهرشدن تدریجی کارت‌ها هنگام اسکرول --- */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media (max-width:640px){
+  .splash-title{font-size:26px}
+  .timeline-bar{bottom:8px;padding:7px 12px 4px}
+  .tl-label{font-size:11.5px}
+}
